@@ -25,7 +25,7 @@ class _JobListingState extends State<JobListing> {
         shape: const CircleBorder(),
         child: const Icon(Icons.add, color: Colors.black, size: 26),
         onPressed: () async {
-          // waits for data come back, from the JobPost page
+          // waits for data to come back from the JobPost page
           final newJob = await Navigator.pushNamed(context, '/jobpost');
 
           if (newJob != null && newJob is Map<String, String>) {
@@ -41,10 +41,9 @@ class _JobListingState extends State<JobListing> {
           padding: const EdgeInsets.symmetric(horizontal: 27),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            // Reminder... removed 'const' from children to fix the _TypeError
             children: [
               const SizedBox(height: 40.0),
-              _buildHeader(),
+              _buildHeader(), // No 'const' here because it contains dynamic text
               const SizedBox(height: 19.0),
               _buildSearchBar(),
               const SizedBox(height: 28.0),
@@ -58,7 +57,6 @@ class _JobListingState extends State<JobListing> {
                         physics: const BouncingScrollPhysics(),
                         itemCount: jobs.length,
                         itemBuilder: (context, index) {
-                          // PASSING INDEX: The professional way to handle lists
                           return _buildJobCard(index);
                         },
                       ),
@@ -70,6 +68,7 @@ class _JobListingState extends State<JobListing> {
     );
   }
 
+  // FIXED: Removed 'const' from the Column to avoid TypeErrors with dynamic text
   Widget _buildHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -89,7 +88,7 @@ class _JobListingState extends State<JobListing> {
         ),
       ],
     );
-  } // _buildHeader()
+  }
 
   Widget _buildSearchBar() {
     return TextField(
@@ -111,7 +110,7 @@ class _JobListingState extends State<JobListing> {
         ),
       ),
     );
-  } // _buildSearchBar()
+  }
 
   Widget _buildJobCard(int index) {
     return Container(
@@ -128,21 +127,21 @@ class _JobListingState extends State<JobListing> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  jobs[index]['title']!, 
+                  jobs[index]['title'] ?? 'No Title', 
                   style: const TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  jobs[index]['location']!,
+                  jobs[index]['location'] ?? 'No Location',
                   style: const TextStyle(color: Color(0xFF8F8F9E)),
                 ),
               ],
             ),
           ),
           
-          // edit button working now
+          // Edit button
           GestureDetector(
-            onTap: () async{
+            onTap: () async {
               final updatedJob = await Navigator.push(
                 context,
                 MaterialPageRoute(
@@ -161,7 +160,7 @@ class _JobListingState extends State<JobListing> {
 
           const SizedBox(width: 10.0),
 
-          // delete button working
+          // Delete button
           GestureDetector(
             onTap: () {
               setState(() {
@@ -173,5 +172,5 @@ class _JobListingState extends State<JobListing> {
         ],
       ),
     );
-  } // _buildJobCard(int index)
+  }
 }

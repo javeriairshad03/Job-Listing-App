@@ -1,21 +1,20 @@
-<<<<<<< HEAD
-# my_first_app
+# 💼 Job Listing App
 
-A new Flutter project.
+---
 
-## Getting Started
+A simple Flutter application. To bridge the gap between employers and job seekers. This app is built to practice State Management and UI/UX implementation in Flutter.
 
-This project is a starting point for a Flutter application.
+## 🚀 Screens
 
-A few resources to get you started if this is your first Flutter project:
+* **User Authentication**: Sign-in and Sign-up screens.
+* **Job Listing**: Browse, Edit and  through available job postings with a clean UI.
+* **Job Listing**: Browse, Edit and Delete in available job postings.
+* **Job Posting**: Simple form and Submit button.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-=======
-# Job-Listing-App
-A simple Job Listing and Posting App, allows users to browse job listings, post new jobs, and edit or delete existing jobs. This app built to practice State Management and UI/UX implementation in Flutter.
->>>>>>> 652d76a619a4bdc335b784a8cb1554fc3fb13233
+## 🛠️ Tech Stack
+
+* **Framework**: Flutter
+* **Language**: Dart
+* **Version Control**: Git & GitHub
